@@ -1,10 +1,7 @@
 import { Component } from "react";
 import { GlobalStyle } from './GlobalStyle';
 import { nanoid } from 'nanoid';
-import { ContactForm } from "./ContactForm";
-import { Filter } from "./Filter";
-import { ContactList } from "./ContactList";
-import { AppContainer, AppTitle, AppTitleContact } from "./App.style";
+
 
 const storageKey = 'list-contacts';
 export class App extends Component {
@@ -61,20 +58,20 @@ export class App extends Component {
     );
         
     return (
-      <AppContainer>
-        <AppTitle>Phonebook</AppTitle>
-        <ContactForm addContact={this.addContact} />
+      <div>
+        <h1>Phonebook</h1>
+        <div addContact={this.addContact} />
 
         {contacts.length > 0 ? (
           <>
-             <AppTitleContact>Contacts list</AppTitleContact>
-             <Filter filter={filter} onChange={this.handleFilterChange} />       
-             <ContactList contacts={filteredContacts} onDelete={this.deleteContact} />
+             <h2>Contacts list</h2>
+             <div filter={filter} onChange={this.handleFilterChange} />       
+             <div contacts={filteredContacts} onDelete={this.deleteContact} />
           </>
         ) : null}
             
         <GlobalStyle />
-      </AppContainer>
+      </div>
     );
   }
 }
