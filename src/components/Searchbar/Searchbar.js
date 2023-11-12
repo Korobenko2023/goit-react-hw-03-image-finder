@@ -1,6 +1,7 @@
 import { Component } from "react";
 import toast from 'react-hot-toast';
-
+import { FcSearch } from 'react-icons/fc';
+import { SearchBarHeader, SearchButton, SearchForm, SearchInput } from "./Searchbar.style";
 export class Searchbar extends Component {
     state = {
         query: '',        
@@ -8,7 +9,7 @@ export class Searchbar extends Component {
 
   handleSubmit = (e) => {
       e.preventDefault();      
-      if (this.state.query.trim() === "") {
+      if (this.state.query.trim() === '') {
         toast.error("Please fill the field!");
         return;
         } 
@@ -22,14 +23,13 @@ export class Searchbar extends Component {
     
     render() {
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
-          </button>
-
-          <input
-            className="input"
+      <SearchBarHeader>
+        <SearchForm onSubmit={this.handleSubmit}>
+          <SearchButton type="submit">
+            <FcSearch size="20px" />
+          </SearchButton>
+          <SearchInput
+            name="searchQuery"
             type="text"
             autoComplete="off"
             autoFocus
@@ -37,9 +37,8 @@ export class Searchbar extends Component {
             value={this.state.query}
             onChange={this.handleChange}
           />
-        </form>
-      </header>
+        </SearchForm>
+      </SearchBarHeader>
     );
-  }
-    
-}
+  };    
+};

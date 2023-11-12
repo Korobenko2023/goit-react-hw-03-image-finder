@@ -1,6 +1,7 @@
 import { Dna } from 'react-loader-spinner';
 import { LoaderDiv } from './Loader.style';
-export const Loader = () => {    
+export const Loader = () => {
+    return (
         <LoaderDiv>
             <Dna
                 visible={true}
@@ -10,5 +11,6 @@ export const Loader = () => {
                 wrapperStyle={{}}
                 wrapperClass="dna-wrapper"
             />
-        </LoaderDiv>    
-}
+        </LoaderDiv>
+    );
+};
