@@ -40,6 +40,7 @@ export class App extends Component {
         total: totalHits,
         loadMore: page < Math.ceil(totalHits / 12),
       }));
+
       scroll.scrollToBottom({
             duration: 800,
             smooth: 'easeInOutQuart',

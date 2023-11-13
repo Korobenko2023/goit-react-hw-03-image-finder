@@ -12,6 +12,8 @@ export const SearchBarHeader = styled.header`
   padding-left: ${p => p.theme.spasing(6)};
   padding-right: ${p => p.theme.spasing(6)};
   background-color: ${p => p.theme.colors.iris};  
+   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const SearchForm = styled.form`
@@ -21,7 +23,7 @@ export const SearchForm = styled.form`
   border-radius: ${p => p.theme.radii.md};
   overflow: hidden;
 `;
-
+ 
 export const SearchButton = styled.button`
   display: inline-block;
   width: 60px;
@@ -52,3 +54,5 @@ export const SearchInput = styled.input`
     padding-left: ${p => p.theme.spasing(2)};  
   }
 `;
+
+

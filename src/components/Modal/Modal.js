@@ -30,3 +30,4 @@ export const Modal = ({ largeImageURL, tags, onClose }) => {
     </Overlay>
   );
 };
+
