@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { animateScroll as scroll } from 'react-scroll';
 import { fetchImages } from '../Services/Api';
 import { GlobalStyle } from "components/Services/GlobalStyle";
 import { Loader } from "components/Loader/Loader";
@@ -15,6 +16,7 @@ export class App extends Component {
         largeImage: '',
         tags: '',
         isLoading: false,
+        loadMore: false,
         total: 0,
   }; 
 
@@ -34,10 +36,15 @@ export class App extends Component {
          return;
         } 
       this.setState((prevState) => ({
-        images: page === 1 ? hits : [...prevState.images, ...hits],
+        images: [...prevState.images, ...hits],
         total: totalHits,
         loadMore: page < Math.ceil(totalHits / 12),
       }));
+      scroll.scrollToBottom({
+            duration: 800,
+            smooth: 'easeInOutQuart',
+        });
+      
     } catch (error) {
        toast.error('Oops! Something went wrong. Please try again later.', error);
     } finally {
@@ -73,7 +80,7 @@ export class App extends Component {
         <Searchbar onSubmit={this.onSubmit} /> 
         {isLoading && <Loader />}
         {images.length > 0 && <ImageGallery images={images} onImageClick={this.handleImageClick} />}
-        {loadMore && !isLoading && images.length > 0 && <Button onClick={this.handleLoadMore} />}
+        {loadMore && <Button onClick={this.handleLoadMore} />}
         <GlobalStyle />
         <Toaster position="top-center" />
       </AppContainer>
