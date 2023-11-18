@@ -27,10 +27,16 @@ export class App extends Component {
     }    
   }
 
-   fetchImages = async ( query, page ) => {
-    try {
-      this.setState({ isLoading: true });      
-      const { hits, totalHits } = await fetchImages( query, page );
+  fetchImages = async (query, page) => {
+    if (!query) {
+      return;
+    }
+
+    this.setState({ isLoading: true }); 
+
+    try {           
+      const { hits, totalHits } = await fetchImages(query, page);
+      
         if (hits.length === 0 && page === 1) {
            toast.error('Sorry, there are no images matching your search query. Please try again.'); 
          return;
@@ -81,7 +87,7 @@ export class App extends Component {
         <Searchbar onSubmit={this.onSubmit} /> 
         {isLoading && <Loader />}
         {images.length > 0 && <ImageGallery images={images} onImageClick={this.handleImageClick} />}
-        {loadMore && <Button onClick={this.handleLoadMore} />}
+        {loadMore && <Button onClick={this.handleLoadMore} disabled={isLoading}></Button>}
         <GlobalStyle />
         <Toaster position="top-center" />
       </AppContainer>

@@ -14,8 +14,7 @@ export const fetchImages = async (query, page) => {
     };
     
      const { data } = await axios.get(BASE_URL, { params });
-     const { hits, totalHits } = data;
-    return { hits, totalHits };
+     return data;
 }
 
 

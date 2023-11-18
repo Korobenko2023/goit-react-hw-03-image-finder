@@ -8,17 +8,18 @@ export class Searchbar extends Component {
     }   
 
   handleSubmit = (e) => {
-      e.preventDefault();      
-      if (this.state.query.trim() === '') {
+    e.preventDefault();  
+      const { query } = this.state;
+      if (query.trim() === '') {
         toast.error("Please fill the field!");
         return;
         } 
-    this.props.onSubmit(this.state.query);
+    this.props.onSubmit(query);
     this.setState({ query: '' });
     };
 
   handleChange = (e) => {
-    this.setState({ query: e.target.value});
+    this.setState({ query: e.target.value.toLowerCase() });
   };
     
     render() {
