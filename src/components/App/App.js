@@ -13,11 +13,8 @@ export class App extends Component {
         images: [],
         query: '',
         page: 1,
-        largeImage: '',
-        tags: '',
         isLoading: false,
         loadMore: false,
-        total: 0,
   }; 
 
   componentDidUpdate(prevProps, prevState) {
@@ -86,7 +83,7 @@ export class App extends Component {
       <AppContainer>        
         <Searchbar onSubmit={this.onSubmit} /> 
         {isLoading && <Loader />}
-        {images.length > 0 && <ImageGallery images={images} onImageClick={this.handleImageClick} />}
+        {images.length > 0 && <ImageGallery images={images} />}
         {loadMore && <Button onClick={this.handleLoadMore} disabled={isLoading}></Button>}
         <GlobalStyle />
         <Toaster position="top-center" />
