@@ -13,20 +13,22 @@ export class ImageGalleryItem extends Component {
     };
 
   render() {
-    const { id, webformatURL, largeImageURL, tags } = this.props;
+    const { webformatURL, largeImageURL, tags } = this.props;
     const { isModalOpen } = this.state;
     return (
-      <ImageGalleryItemLi key={id}>
-        <ImageGalleryImage src={webformatURL} alt={tags} onClick={this.toggleModal} />
-        {isModalOpen && (
-          <ModalWindow
-            onClose={this.toggleModal}
-            largeImageURL={largeImageURL}
-            tags={tags}
-            isOpen={isModalOpen}
-          />
-        )}
-      </ImageGalleryItemLi>
+      <>
+           <ImageGalleryItemLi onClick={this.toggleModal}>
+              <ImageGalleryImage src={webformatURL} alt={tags} />
+           </ImageGalleryItemLi>
+           {isModalOpen && (
+             <ModalWindow
+                onClose={this.toggleModal}
+                largeImageURL={largeImageURL}
+                tags={tags}
+                isOpen={isModalOpen}            
+              />
+           )}        
+      </>
     );
   }
 }
